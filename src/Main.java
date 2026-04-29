@@ -1,34 +1,52 @@
-import java.util.Random;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Random random = new Random();
-        int hiddenTarget = random.nextInt(101);
+        Scanner scanner = new Scanner(System.in);
 
-        Scanner guessNum = new Scanner(System.in);
-        int num;
-        int attempts = 0;
-        int sum = 0;
+        System.out.print("First string:  ");
+        String word1 = scanner.nextLine();
 
-        do {
-            num = guessNum.nextInt();
+        System.out.print("Second string: ");
+        String word2 = scanner.nextLine();
 
-            if (num < hiddenTarget) {
-                System.out.println("No, hidden target is bigger than this number");
-            } else if (num > hiddenTarget) {
-                System.out.println("No, hidden target is less than this number");
+        if (AnagramCheck(word1, word2)) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+
+    }
+
+    public static boolean AnagramCheck(String word1, String word2){
+        word1 = word1.toLowerCase().replace(" ","");
+        word2 = word2.toLowerCase().replace(" ","");
+
+        char[] arr1 = word1.toCharArray();
+        char[] arr2 = word2.toCharArray();
+
+        for (int i = 0; i < arr1.length - 1; i++) {
+            for (int j = 0; j < arr1.length - 1 - i; j++) {
+                if (arr1[j] > arr1[j + 1]) {
+                    char temp = arr1[j];
+                    arr1[j] = arr1[j + 1];
+                    arr1[j + 1] = temp;
+                }
             }
+        }
 
-            attempts++;
-            sum += num;
+        for (int i = 0; i < arr2.length - 1; i++) {
+            for (int j = 0; j < arr2.length - 1 - i; j++) {
+                if (arr2[j] > arr2[j + 1]) {
+                    char temp = arr2[j];
+                    arr2[j] = arr2[j + 1];
+                    arr2[j + 1] = temp;
+                }
+            }
+        }
 
-        } while (num != hiddenTarget);
-
-        double avg = sum / attempts;
-
-        System.out.println("Correct, the target number is: " + hiddenTarget);
-        System.out.println("The average of attempts: " + avg);
+        return Arrays.equals(arr1, arr2);
     }
 
 }
