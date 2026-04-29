@@ -16,7 +16,6 @@ public class Main {
         } else {
             System.out.println("NO");
         }
-
     }
 
     public static boolean AnagramCheck(String word1, String word2){
