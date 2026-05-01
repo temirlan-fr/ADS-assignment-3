@@ -20,6 +20,40 @@ public class Main {
 //        }
 
 
+
+//        TASK-2
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.print("Array size: ");
+//        int n = scanner.nextInt();
+//
+//        int[] arr = new int[n];
+//        System.out.print("Elements: ");
+//        for (int i = 0; i < n; i++) {
+//            arr[i] = scanner.nextInt();
+//        }
+//
+//        System.out.print("k: ");
+//        int k = scanner.nextInt();
+//
+//        for (int i = 0; i < arr.length - 1; i++) {
+//            for (int j = 0; j < arr.length - 1 - i; j++) {
+//                if (arr[j] > arr[j + 1]) {
+//                    int temp = arr[j];
+//                    arr[j] = arr[j + 1];
+//                    arr[j + 1] = temp;
+//                }
+//            }
+//        }
+//
+//        System.out.println("K-th smallest element: " + arr[k - 1]);
+
+
+
+
+
+//        TASK-3
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Array size: ");
@@ -31,10 +65,6 @@ public class Main {
             arr[i] = scanner.nextInt();
         }
 
-        System.out.print("k: ");
-        int k = scanner.nextInt();
-
-        // Bubble Sort
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - 1 - i; j++) {
                 if (arr[j] > arr[j + 1]) {
@@ -45,7 +75,13 @@ public class Main {
             }
         }
 
-        System.out.println("K-th smallest element: " + arr[k - 1]);
+
+        if (n % 2 == 1) {
+            System.out.println("Median: " + arr[n / 2]);
+        } else {
+            double median = (arr[n / 2 - 1] + arr[n / 2]) / 2.0;
+            System.out.println("Median: " + median);
+        }
     }
 
 //    public static boolean AnagramCheck(String word1, String word2){
